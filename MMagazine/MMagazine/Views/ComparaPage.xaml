@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Main.Views.ComparaPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <Grid RowDefinitions="*,*,*,4*,*,*">
+            <StackLayout Padding="10">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Subtitle"
+                    HorizontalOptions="Center"
+                    Text="Totalização de Vendas"
+                    TextColor="#333"
+                    VerticalOptions="Center" />
+            </StackLayout>
+
+            <Grid Grid.Row="1" ColumnDefinitions="*,*">
+                <StackLayout>
+                    <Label
+                        FontSize="Default"
+                        HorizontalOptions="Center"
+                        Text="Início"
+                        TextColor="#333" />
+
+                    <Frame
+                        Margin="10,0,2,0"
+                        Padding="0"
+                        BorderColor="#333"
+                        CornerRadius="10"
+                        HasShadow="False"
+                        HeightRequest="40">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="dtInicio_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout Orientation="Horizontal">
+                            <DatePicker
+                                x:Name="dtInicio"
+                                DateSelected="Data_DateSelected"
+                                FontSize="Caption"
+                                HorizontalOptions="CenterAndExpand"
+                                IsVisible="false"
+                                TextColor="#333"
+                                Unfocused="dtInicio_Unfocused" />
+                            <Label
+                                x:Name="lblDataInicio"
+                                Margin="10,0,0,0"
+                                HorizontalOptions="FillAndExpand"
+                                Text=""
+                                TextColor="#333"
+                                VerticalOptions="Center" />
+                            <Image
+                                Margin="0,0,10,0"
+                                HorizontalOptions="End"
+                                Source="Calendar.png" />
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Grid.Column="1">
+                    <Label
+                        FontSize="Default"
+                        HorizontalOptions="Center"
+                        Text="Final"
+                        TextColor="#333" />
+                    <Frame
+                        Margin="2,0,10,0"
+                        Padding="0"
+                        BorderColor="#333"
+                        CornerRadius="10"
+                        HasShadow="False"
+                        HeightRequest="40">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="dtFinal_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout Orientation="Horizontal">
+                            <DatePicker
+                                x:Name="dtFinal"
+                                DateSelected="Data_DateSelected"
+                                FontSize="Caption"
+                                HorizontalOptions="FillAndExpand"
+                                IsVisible="false"
+                                TextColor="#333"
+                                Unfocused="dtFinal_Unfocused" />
+                            <Label
+                                x:Name="lblDataFinal"
+                                Margin="10,0,0,0"
+                                HorizontalOptions="FillAndExpand"
+                                Text=""
+                                TextColor="#333"
+                                VerticalOptions="Center" />
+                            <Image
+                                Margin="0,0,10,0"
+                                HorizontalOptions="End"
+                                Source="Calendar.png" />
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </Grid>
+
+            <Grid Grid.Row="2" ColumnDefinitions="*,*">
+                <StackLayout>
+                    <Frame
+                        Margin="10,0,2,0"
+                        Padding="0"
+                        BorderColor="#333"
+                        CornerRadius="10"
+                        HasShadow="False"
+                        HeightRequest="40">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="pckLoja_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout Orientation="Horizontal">
+                            <Picker
+                                x:Name="pckLoja"
+                                Title="Selecione a Loja"
+                                FontSize="Header"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                ItemDisplayBinding="{Binding codLoja}"
+                                ItemsSource="{Binding ListaLojas}"
+                                TextColor="#333" />
+                            <Image
+                                Margin="0,0,10,0"
+                                HorizontalOptions="EndAndExpand"
+                                Source="seta.png" />
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout
+                    Grid.Column="1"
+                    Margin="2,0,10,0"
+                    Padding="0"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="StartAndExpand">
+                    <Button
+                        x:Name="btnBuscar"
+                        BackgroundColor="#4f5a81"
+                        Clicked="btnBuscar_Clicked"
+                        CornerRadius="10"
+                        HeightRequest="40"
+                        ImageSource="searchwhite.png" />
+                </StackLayout>
+
+            </Grid>
+
+            <Grid
+                Grid.Row="3"
+                Margin="5,0"
+                ColumnDefinitions="*,*,*">
+                <Frame
+                    BorderColor="#333"
+                    CornerRadius="10"
+                    HasShadow="False">
+                    <StackLayout>
+                        <Label
+                            FontAttributes="Bold"
+                            Style="{DynamicResource LabelDesign}"
+                            Text="Ano Passado" />
+
+                        <Label
+                            x:Name="lblFluxoCaixaA"
+                            Style="{DynamicResource LabelDesign}"
+                            TextColor="#39622C" />
+
+                        <Label
+                            x:Name="lblQtdePedidoA"
+                            Style="{DynamicResource LabelDesign}"
+                            TextColor="#333" />
+
+                        <Label
+                            x:Name="lblTotalPedidoA"
+                            Style="{DynamicResource LabelDesign}"
+                            TextColor="#DF7F30" />
+
+                        <Label
+                            x:Name="lblTotalCancelA"
+                            Style="{DynamicResource LabelDesign}"
+                            TextColor="#D44E4E" />
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    Grid.Column="1"
+                    BorderColor="#333"
+                    CornerRadius="10"
+                    HasShadow="False">
+                    <StackLayout>
+                        <Label
+                            FontAttributes="Bold"
+                            Style="{DynamicResource LabelDesign}"
+                            Text="Mês Passado" />
+
+                        <Label
+                            x:Name="lblFluxoCaixaM"
+                            Style="{DynamicResource LabelDesign}"
+                            TextColor="#39622C" />
+
+                        <Label
+                            x:Name="lblQtdePedidoM"
+                            Style="{DynamicResource LabelDesign}"
+                            TextColor="#333" />
+
+                        <Label
+                            x:Name="lblTotalPedidoM"
+                            Style="{DynamicResource LabelDesign}"
+                            TextColor="#DF7F30" />
+
+                        <Label
+                            x:Name="lblTotalCancelM"
+                            Style="{DynamicResource LabelDesign}"
+                            TextColor="#D44E4E" />
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    Grid.Column="2"
+                    BorderColor="#333"
+                    CornerRadius="10"
+                    HasShadow="False">
+                    <StackLayout>
+                        <Label
+                            FontAttributes="Bold"
+                            Style="{DynamicResource LabelDesign}"
+                            Text="Período Selecionado" />
+
+                        <Label
+                            x:Name="lblFluxoCaixaS"
+                            Style="{DynamicResource LabelDesign}"
+                            TextColor="#39622C" />
+
+                        <Label
+                            x:Name="lblQtdePedidoS"
+                            Style="{DynamicResource LabelDesign}"
+                            TextColor="#333" />
+
+                        <Label
+                            x:Name="lblTotalPedidoS"
+                            Style="{DynamicResource LabelDesign}"
+                            TextColor="#DF7F30" />
+
+                        <Label
+                            x:Name="lblTotalCancelS"
+                            Style="{DynamicResource LabelDesign}"
+                            TextColor="#D44E4E" />
+                    </StackLayout>
+                </Frame>
+            </Grid>
+
+            <Grid
+                Grid.Row="4"
+                Margin="20,0"
+                ColumnDefinitions="*,*,*">
+                <StackLayout>
+                    <Label
+                        x:Name="lblValorTotalA"
+                        Style="{DynamicResource LabelDesign}"
+                        TextColor="#2F80ED" />
+                </StackLayout>
+                <StackLayout Grid.Column="1">
+                    <Label
+                        x:Name="lblValorTotalM"
+                        Style="{DynamicResource LabelDesign}"
+                        TextColor="#2F80ED" />
+                </StackLayout>
+                <StackLayout Grid.Column="2">
+                    <Label
+                        x:Name="lblValorTotalS"
+                        Style="{DynamicResource LabelDesign}"
+                        TextColor="#2F80ED" />
+                </StackLayout>
+            </Grid>
+
+            <Grid
+                Grid.Row="5"
+                Margin="10,0,0,0"
+                ColumnDefinitions="*,*,*,*,*">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="legendgreen.png" />
+                    <Label Style="{DynamicResource LabelDesignLegend}" Text="Fluxo de caixa" />
+                </StackLayout>
+                <StackLayout Grid.Column="1" Orientation="Horizontal">
+                    <Image Source="legendblack.png" />
+                    <Label Style="{DynamicResource LabelDesignLegend}" Text="Qtde de Pedidos" />
+                </StackLayout>
+                <StackLayout Grid.Column="2" Orientation="Horizontal">
+                    <Image Source="legendorange.png" />
+                    <Label Style="{DynamicResource LabelDesignLegend}" Text="Total de Pedidos" />
+                </StackLayout>
+                <StackLayout Grid.Column="3" Orientation="Horizontal">
+                    <Image Source="legendred.png" />
+                    <Label Style="{DynamicResource LabelDesignLegend}" Text="Total de Cancelados" />
+                </StackLayout>
+                <StackLayout Grid.Column="4" Orientation="Horizontal">
+                    <Image Source="legendblue.png" />
+                    <Label Style="{DynamicResource LabelDesignLegend}" Text="Total" />
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

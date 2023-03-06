@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Main.Views.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local1="clr-namespace:Main"
+    Background="#04134b"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0" Style="{StaticResource CenterObj}">
+                <Image Source="padrao.png" />
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="1"
+                Margin="55,0"
+                Padding="0,20"
+                Orientation="Horizontal">
+
+                <Frame CornerRadius="40">
+                    <Image
+                        HeightRequest="24"
+                        Source="user.png"
+                        WidthRequest="24" />
+                </Frame>
+
+                <Frame
+                    Margin="-20,3,0,3"
+                    Padding="0"
+                    CornerRadius="10"
+                    HorizontalOptions="FillAndExpand">
+                    <Entry
+                        x:Name="txtusername"
+                        Margin="20,0,50,0"
+                        FontSize="Default"
+                        HorizontalOptions="FillAndExpand"
+                        MaxLength="20"
+                        Placeholder="usuário"
+                        TextColor="#333"
+                        VerticalOptions="Center" />
+                </Frame>
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="2"
+                Margin="55,0"
+                Padding="0,20"
+                Orientation="Horizontal">
+
+                <Frame CornerRadius="40">
+                    <Image
+                        HeightRequest="24"
+                        Source="password_key.png"
+                        WidthRequest="24" />
+                </Frame>
+
+                <Frame
+                    Margin="-20,3,0,3"
+                    Padding="0"
+                    CornerRadius="10"
+                    HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal">
+                        <Entry
+                            x:Name="txtsenha"
+                            Margin="20,0,0,0"
+                            FontSize="Default"
+                            HorizontalOptions="FillAndExpand"
+                            IsPassword="{Binding Source={x:Reference ShowPasswordActual}, Path=HidePassword}"
+                            MaxLength="10"
+                            Placeholder="senha"
+                            TextColor="#333"
+                            VerticalOptions="CenterAndExpand" />
+                        <!--  IsPassword="{Binding Source={x:Reference ShowPasswordActual}, Path=HidePassword}"  -->
+                        <ImageButton
+                            Margin="0,0,20,0"
+                            BackgroundColor="Transparent"
+                            HeightRequest="24"
+                            HorizontalOptions="EndAndExpand"
+                            Source="eyef.png"
+                            VerticalOptions="Center">
+                            <ImageButton.Triggers>
+                                <EventTrigger Event="Clicked">
+                                    <local1:ShowPasswordTriggerAction
+                                        x:Name="ShowPasswordActual"
+                                        HideIcon="eyef.png"
+                                        ShowIcon="eye.png" />
+                                </EventTrigger>
+                            </ImageButton.Triggers>
+                        </ImageButton>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="3"
+                HorizontalOptions="EndAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="Center">
+                <Label Text="Salvar usuário" TextColor="White" />
+                <Switch
+                    x:Name="Lembrar"
+                    Margin="0,0,20,0"
+                    OnColor="White"
+                    ThumbColor="White" />
+            </StackLayout>
+
+            <StackLayout Grid.Row="4">
+                <Button
+                    x:Name="btnLogin"
+                    BackgroundColor="#4f5a81"
+                    BorderColor="White"
+                    BorderWidth="1"
+                    Clicked="btnLogin_Clicked"
+                    CornerRadius="10"
+                    HeightRequest="56"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="LOGIN"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="200" />
+                <ActivityIndicator
+                    x:Name="ActivityButton"
+                    HorizontalOptions="Center"
+                    IsRunning="True"
+                    Opacity="0"
+                    VerticalOptions="Center"
+                    Color="White" />
+
+                <Label Style="{DynamicResource LabelReserva}" Text="Empresa © Todos os direitos reservados" />
+            </StackLayout>
+
+
+
+        </Grid>
+    </ScrollView>
+    <!--<ContentPage.Content>
+        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+            <Button
+                Command="{Binding LoginCommand}"
+                Text="Login"
+                VerticalOptions="Center" />
+        </StackLayout>
+    </ContentPage.Content>-->
+</ContentPage>

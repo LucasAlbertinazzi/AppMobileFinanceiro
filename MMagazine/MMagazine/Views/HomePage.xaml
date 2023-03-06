@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Main.Views.HomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#04134B"
+    NavigationPage.HasNavigationBar="True">
+    <ContentPage.Content>
+        <Grid RowDefinitions="3*, *">
+
+            <Image
+                HorizontalOptions="CenterAndExpand"
+                Source="padrao.png"
+                VerticalOptions="CenterAndExpand" />
+
+            <Label
+                Grid.Row="1"
+                Style="{DynamicResource LabelReserva}"
+                Text="Empresa © Todos os direitos reservados" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
